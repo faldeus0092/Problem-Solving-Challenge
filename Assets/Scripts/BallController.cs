@@ -29,6 +29,8 @@ public class BallController : MonoBehaviour
                 yeetBallRandomly();
                 break;
             case "3":
+                rigidBody2D = GetComponent<Rigidbody2D>();
+                yeetBallRandomly();
                 break;
             case "4":
                 break;
