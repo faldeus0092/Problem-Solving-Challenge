@@ -7,19 +7,19 @@ using UnityEngine.SceneManagement;
 public class BallController : MonoBehaviour
 {
     // 1-2
-    public float xInitialForce;
-    public float yInitialForce;
+    float xInitialForce = 700.0f;
+    float yInitialForce = 700.0f;
 
+    // universal
     private Rigidbody2D rigidBody2D;
-
     string curScene;
 
-    // WASD move keys
-    public KeyCode upButton = KeyCode.W;
-    public KeyCode downButton = KeyCode.S;
-    public KeyCode rightButton = KeyCode.D;
-    public KeyCode leftButton = KeyCode.A;
-    public float speed = 19.0f;
+    // 4, WASD move keys
+    KeyCode upButton = KeyCode.W;
+    KeyCode downButton = KeyCode.S;
+    KeyCode rightButton = KeyCode.D;
+    KeyCode leftButton = KeyCode.A;
+    float speed = 19.0f;
 
     // Start is called before the first frame update
     private void Start()
@@ -30,8 +30,6 @@ public class BallController : MonoBehaviour
         // atur behavior bola tergantung jenis scene
         switch (curScene)
         {
-            case "1":
-                break;
             case "2":
                 rigidBody2D = GetComponent<Rigidbody2D>();
                 yeetBallRandomly();
@@ -43,21 +41,18 @@ public class BallController : MonoBehaviour
             case "4":
                 rigidBody2D = GetComponent<Rigidbody2D>();
                 break;
+            case "5":
+                rigidBody2D = GetComponent<Rigidbody2D>();
+                break;
         }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // atur behavior bola tergantung jenis scene
         switch (curScene)
         {
-            case "1":
-                break;
-            case "2":
-                break;
-            case "3":
-                break;
             case "4":
                 controlBall();
                 break;
