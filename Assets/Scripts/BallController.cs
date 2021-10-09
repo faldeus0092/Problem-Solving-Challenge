@@ -22,15 +22,9 @@ public class BallController : MonoBehaviour
         // atur behavior bola tergantung jenis scene
         switch (curScene)
         {
-            case "1":
-                break;
             case "2":
                 rigidBody2D = GetComponent<Rigidbody2D>();
                 yeetBallRandomly();
-                break;
-            case "3":
-                break;
-            case "4":
                 break;
         }
     }
