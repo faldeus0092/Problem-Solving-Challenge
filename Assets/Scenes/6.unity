@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f77b0d99cebaa449aa5b2e840e46c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxPrefab: {fileID: 1006828175099804840, guid: a8eda467039556d4baa51847925d4737,
+  boxPrefab: {fileID: 4179800679823116792, guid: a8eda467039556d4baa51847925d4737,
     type: 3}
   minX: -7
   minY: -4.8
@@ -206,6 +206,7 @@ MonoBehaviour:
   maxY: 4.8
   minQty: 10
   maxQty: 20
+  ball: {fileID: 1228553891}
 --- !u!4 &449998534
 Transform:
   m_ObjectHideFlags: 0

@@ -5,11 +5,11 @@ using UnityEngine;
 public class WSADControl : MonoBehaviour
 {
     // WASD move keys
-    public KeyCode upButton = KeyCode.W;
-    public KeyCode downButton = KeyCode.S;
-    public KeyCode rightButton = KeyCode.D;
-    public KeyCode leftButton = KeyCode.A;
-    public float speed = 19.0f;
+    [SerializeField]
+    private KeyCode upButton = KeyCode.W, downButton = KeyCode.S, rightButton = KeyCode.D, leftButton = KeyCode.A;
+
+    [SerializeField]
+    private float speed = 19.0f;
 
     private Rigidbody2D rigidBody2D;
 
