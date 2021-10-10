@@ -8,6 +8,8 @@ public class BoxController : MonoBehaviour
     GameObject player;
     GameObject gameManager;
     GameManager gameManagerScript;
+    public AudioClip notificationSound;
+    AudioSource sound;
 
     void Awake()
     {
