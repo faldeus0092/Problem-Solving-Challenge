@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveByMousePointer : MonoBehaviour
 {
@@ -16,13 +17,29 @@ public class MoveByMousePointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        if(transform.position != mousePosition)
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "5")
         {
-            transform.position = Vector2.MoveTowards(transform.position, mousePosition, Time.deltaTime * moveSpeed);
+            mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+            if (transform.position != mousePosition)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, mousePosition, Time.deltaTime * moveSpeed);
+            }
         }
-        
+        else
+        {
+            if (!GameManager.Instance.IsGameOver)
+            {
+                mousePosition = Input.mousePosition;
+                mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+                if (transform.position != mousePosition)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, mousePosition, Time.deltaTime * moveSpeed);
+                }
+            }
+        }
     }
 }

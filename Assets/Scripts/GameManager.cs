@@ -1,9 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region singleton
+    private static GameManager _instance;
+
+    public static GameManager Instance { get { return _instance; } }
+    
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    #endregion
+
     [SerializeField]
     private GameObject boxPrefab = null;
     [SerializeField]
@@ -13,15 +32,45 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject ball = null;
 
+    public bool IsGameOver { get { return isGameOver; } }
+    private bool isGameOver = false;
+
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        isGameOver = false;
         int random = Random.Range(minQty, maxQty);
         while (random != 0)
         {
             Instantiate(boxPrefab, new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY)), Quaternion.identity);
             //SpawnBox();
             random--;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && isGameOver)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+
+            switch (scene.name)
+            {
+                case "9":
+                    SceneManager.LoadScene("9");
+                    break;
+            }
+        }
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        if (ScoreManager.score > ScoreManager.highscore)
+        {
+            ScoreManager.Instance.SetHighScore(ScoreManager.score);
         }
     }
 
@@ -34,10 +83,9 @@ public class GameManager : MonoBehaviour
     IEnumerator RespawnWithDelay(GameObject obj)
     {
         obj.SetActive(false);
-
+        //Debug.Log("Masuk");
         yield return new WaitForSeconds(3);
 
-        //Debug.Log("Masuk");
         bool isSpawned = false;
         while (!isSpawned)
         {
@@ -59,9 +107,5 @@ public class GameManager : MonoBehaviour
         obj.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

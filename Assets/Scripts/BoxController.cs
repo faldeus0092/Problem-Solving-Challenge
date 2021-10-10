@@ -27,12 +27,16 @@ public class BoxController : MonoBehaviour
 
             // panggil method spawn box
             Scene scene = SceneManager.GetActiveScene();
+            
             switch (scene.name)
             {
                 case "7":
                     Destroy(gameObject);
                     break;
                 case "8":
+                    gameManagerScript.SpawnBox(gameObject);
+                    break;
+                case "9":
                     gameManagerScript.SpawnBox(gameObject);
                     break;
             }
